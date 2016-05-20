@@ -20,6 +20,8 @@ class Choice(models.Model):
     CATEGORY_OPTIONS = (
         ('Action', 'Action'),
         ('Adventure', 'Adventure'),
+        ('Casual', 'Casual'),
+        ('FPS', 'FPS'),
         ('Indie', 'Indie'),
         ('Multiplayer', 'Multiplayer'),
         ('RPG', 'RPG'),
