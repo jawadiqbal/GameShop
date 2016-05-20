@@ -4,4 +4,4 @@ from django.shortcuts import render
 # Create your views here.
 
 def product_home(request):
-    return HttpResponse("<h1>Hello</h1>")
+    return render(request, "index.html", {})
