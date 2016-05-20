@@ -18,17 +18,17 @@ def upload_location(instance, filename):
 
 class Choice(models.Model):
     CATEGORY_OPTIONS = (
-        ('ACT', 'Action'),
-        ('ADV', 'Adventure'),
-        ('IND', 'Indie'),
-        ('MP', 'Multiplayer'),
+        ('Action', 'Action'),
+        ('Adventure', 'Adventure'),
+        ('Indie', 'Indie'),
+        ('Multiplayer', 'Multiplayer'),
         ('RPG', 'RPG'),
-        ('RAC', 'Racing'),
-        ('SIM', 'Simulation'),
-        ('SPO', 'Sports'),
-        ('STR', 'Strategy'),
+        ('Racing', 'Racing'),
+        ('Simulation', 'Simulation'),
+        ('Sports', 'Sports'),
+        ('Strategy', 'Strategy'),
     )
-    title = models.CharField(max_length=3,choices=CATEGORY_OPTIONS)
+    title = models.CharField(max_length=120,choices=CATEGORY_OPTIONS)
 
     def __unicode__(self):
         return self.title

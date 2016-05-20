@@ -11,4 +11,4 @@ class ProductModelAdmin(admin.ModelAdmin):
 		model = Product
 
 admin.site.register(Product, ProductModelAdmin)
-admin.site.register(Choice) # Product.objects.filter(category__title="ACT") to find action games
+admin.site.register(Choice) # Product.objects.filter(category__title="Action") to find action games
