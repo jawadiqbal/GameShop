@@ -1,27 +1,23 @@
+{% extends "base.html" %}
 {% load staticfiles %}
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>{{ title }}</title>
-<link rel="stylesheet" href='{% static "css/index.css" %}' />
-</head>
 
-<body>
-<div id="header">
-<h1 style="background-color:black;color:white;text-align:center;padding:5px;">Game shop</h1>
-</div>
+{% block title %} {{ title }} {% endblock %}
 
-<div id="nav">
+{% block header %}
+{{ block.super }}
+{% endblock %}
+
+{% block nav %}
 FPS<br>
 Strategy<br>
 Arcade
-</div>
+{% endblock %}
 
-<div id="section">
-<h1>London</h1>
+{% block section %}
+<div class="col-sm-6 col-sm-offset-3">
 {% for obj in object_list %}
   {{ obj.title }}<br>
-  {{obj.image}}<br>
+  <img src="{{obj.image.url}}"><br>
   {{ obj.developer }}<br>
   {{ obj.publisher }}<br>
   {{ obj.price }}<br>
@@ -29,10 +25,4 @@ Arcade
   {{ obj.quantity }}<br>
 {% endfor %}
 </div>
-
-<div id="footer">
-Copyright © habijabi.com
-</div>
-
-</body>
-</html>
+{% endblock %}
