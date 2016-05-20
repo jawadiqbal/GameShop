@@ -24,6 +24,7 @@ class Product(models.Model):
     publisher = models.CharField(max_length=120,null=True)
     price = models.DecimalField(max_digits=5,decimal_places=2,null=True)
     category = models.CharField(max_length=120)
+    quantity = models.IntegerField(default=10)
 
     def __unicode__(self):
         return self.title
