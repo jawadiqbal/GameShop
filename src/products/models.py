@@ -22,7 +22,7 @@ class Product(models.Model):
     slug = models.SlugField(unique=True)
     developer = models.CharField(max_length=120,null=True)
     publisher = models.CharField(max_length=120,null=True)
-    price = models.DecimalField(max_digits=5,decimal_places=2)
+    price = models.DecimalField(max_digits=5,decimal_places=2,null=True)
     category = models.CharField(max_length=120)
 
     def __unicode__(self):
@@ -30,6 +30,9 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_price(self):
+        return "$%s" % self.price
 
 def create_slug(instance, new_slug=None):
     slug = slugify(instance.title)
