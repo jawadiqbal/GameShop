@@ -1,13 +1,13 @@
 <style>
 
-#header {
+.header {
     background-color:black;
     color:white;
     clear: both;
     text-align:center;
     padding:5px;
 }
-#nav {
+.nav {
     line-height:30px;
     background-color:#eeeeee;
     height:300px;
@@ -15,12 +15,12 @@
     float:left;
     padding:5px;
 }
-#section {
+.section {
     width:350px;
     float:left;
     padding:10px;
 }
-#footer {
+.footer {
     background-color:black;
     color:white;
     clear:both;
