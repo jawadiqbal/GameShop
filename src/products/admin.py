@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Product, Choice
+from .models import Product
 
 class ProductModelAdmin(admin.ModelAdmin):
 	list_display = ["title", "developer", "publisher", "quantity", "price"]
@@ -11,4 +11,4 @@ class ProductModelAdmin(admin.ModelAdmin):
 		model = Product
 
 admin.site.register(Product, ProductModelAdmin)
-admin.site.register(Choice) # Product.objects.filter(category__title="Action") to find action games
+# Product.objects.get(category__icontains="Action") to find action games
