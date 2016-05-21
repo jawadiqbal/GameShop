@@ -3,26 +3,18 @@
 
 {% block title %} {{ title }} {% endblock %}
 
-{% block header %}
-{{ block.super }}
-{% endblock %}
-
-{% block nav %}
-FPS<br>
-Strategy<br>
-Arcade
-{% endblock %}
-
-{% block section %}
-<div class="col-sm-6 col-sm-offset-3">
+{% block grid %}
 {% for obj in object_list %}
-  {{ obj.title }}<br>
-  <img src="{{obj.image.url}}"><br>
-  {{ obj.developer }}<br>
-  {{ obj.publisher }}<br>
-  {{ obj.price }}<br>
-  {{ obj.category }}<br>
-  {{ obj.quantity }}<br>
+  <div class="column">
+    <img src="{{obj.image.url}}" alt="Norway" style="width:100%" class="w3-hover-opacity">
+    <div class="w3-container w3-white">
+      <b>Title: </b>{{ obj.title }}<br>
+      <b>Developer: </b>{{ obj.developer }}<br>
+      <b>Publisher: </b>{{ obj.publisher }}<br>
+      <b>Price: </b>{{ obj.price }}$<br>
+      <b>Category: </b>{{ obj.category }}<br>
+      <b>Avilable quantity: </b>{{ obj.quantity }}<br>
+    </div>
+  </div>
 {% endfor %}
-</div>
 {% endblock %}
