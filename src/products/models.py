@@ -57,6 +57,9 @@ class Product(models.Model):
     def get_price(self):
         return "$%s" % self.price
 
+    def get_category_title(self):
+        return category__title
+
 def create_slug(instance, new_slug=None):
     slug = slugify(instance.title)
     if new_slug is not None:
