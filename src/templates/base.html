@@ -81,11 +81,10 @@
 	            <div class="tfclear"></div>
 	        </div>-->
           <div class="w3-section w3-bottombar w3-padding-16">
-            <span class="w3-margin-right">Filter:</span>
             <button class="w3-btn w3-teal">All</button>
             <button class="w3-btn w3-green">Action</button>
             <button class="w3-btn w3-green">Adventure</button>
-            <button class="w3-btn w3-green">Casual</button>
+            <button class="w3-btn w3-green">Arcade</button>
             <button class="w3-btn w3-green">Indie</button>
             <button class="w3-btn w3-green">Multiplayer</button>
             <button class="w3-btn w3-green">Racing</button>
@@ -112,15 +111,8 @@
         </div>
 
         <!-- Pagination -->
-        <div class="w3-center w3-padding-32">
-          <ul class="w3-pagination">
-            <li><a class="w3-black" href="#">1</a></li>
-            <li><a class="w3-hover-black" href="#">2</a></li>
-            <li><a class="w3-hover-black" href="#">3</a></li>
-            <li><a class="w3-hover-black" href="#">4</a></li>
-            <li><a class="w3-hover-black" href="#">&raquo;</a></li>
-          </ul>
-        </div>
+        {% block pagination %}
+        {% endblock %}
 
         <!-- Footer -->
         <footer class="w3-container w3-padding-32 w3-white">
