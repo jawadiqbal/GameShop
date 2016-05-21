@@ -6,14 +6,18 @@
 {% block grid %}
 {% for obj in object_list %}
   <div class="column">
-    <img src="{{obj.image.url}}" alt='{{obj.title}} cover' style="width:100%" class="w3-hover-opacity">
+    <img src="{{obj.image.url}}" alt='{{obj.title}} cover' style="width:100%" >
     <div class="w3-container w3-white">
       <b>Title: </b>{{ obj.title }}<br>
       <b>Developer: </b>{{ obj.developer }}<br>
       <b>Publisher: </b>{{ obj.publisher }}<br>
       <b>Price: </b>{{ obj.get_price }}<br>
       <b>Category: </b>{{ obj.get_category_title }}<br>
-      <b>Avilable quantity: </b>{{ obj.quantity }}<br>
+      {% if obj.quantity > 0 %}
+        <b class="w3-green">Avilable</b><br>
+      {% else %}
+        <b class="w3-red">Out of stock</b><br>
+      {% endif %}
     </div>
   </div>
 {% endfor %}
