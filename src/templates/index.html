@@ -3,21 +3,179 @@
 
 {% block title %} {{ title }} {% endblock %}
 
+{% block navContent %}
+  <a href="#" class="w3-padding w3-text-teal">HOME</a>
+  <a href="#" class="w3-padding">ABOUT</a>
+  <a href="#" class="w3-padding">CONTACT</a>
+{% endblock %}
+
+{% block filter %}
+<div class="w3-section w3-bottombar w3-padding-16">
+  <form action="{{ products.views.product_home }}" method="get">
+    {% ifequal filter_var "all" %}
+      <button class="w3-btn w3-teal" type="submit" name="all" value="1">All</button>
+      <button class="w3-btn w3-green" type="submit" name="action" value="1">Action</button>
+      <button class="w3-btn w3-green" type="submit" name="adventure" value="1">Adventure</button>
+      <button class="w3-btn w3-green" type="submit" name="arcade" value="1">Arcade</button>
+      <button class="w3-btn w3-green" type="submit" name="indie" value="1">Indie</button>
+      <button class="w3-btn w3-green" type="submit" name="multiplayer" value="1">Multiplayer</button>
+      <button class="w3-btn w3-green" type="submit" name="racing" value="1">Racing</button>
+      <button class="w3-btn w3-green" type="submit" name="rpg" value="1">RPG</button>
+      <button class="w3-btn w3-green" type="submit" name="simulation" value="1">Simulation</button>
+      <button class="w3-btn w3-green" type="submit" name="sports" value="1">Sports</button>
+      <button class="w3-btn w3-green" type="submit" name="strategy" value="1">Strategy</button>
+    {% endifequal %}
+    {% ifequal filter_var "action" %}
+      <button class="w3-btn w3-green" type="submit" name="all" value="1">All</button>
+      <button class="w3-btn w3-teal" type="submit" name="action" value="1">Action</button>
+      <button class="w3-btn w3-green" type="submit" name="adventure" value="1">Adventure</button>
+      <button class="w3-btn w3-green" type="submit" name="arcade" value="1">Arcade</button>
+      <button class="w3-btn w3-green" type="submit" name="indie" value="1">Indie</button>
+      <button class="w3-btn w3-green" type="submit" name="multiplayer" value="1">Multiplayer</button>
+      <button class="w3-btn w3-green" type="submit" name="racing" value="1">Racing</button>
+      <button class="w3-btn w3-green" type="submit" name="rpg" value="1">RPG</button>
+      <button class="w3-btn w3-green" type="submit" name="simulation" value="1">Simulation</button>
+      <button class="w3-btn w3-green" type="submit" name="sports" value="1">Sports</button>
+      <button class="w3-btn w3-green" type="submit" name="strategy" value="1">Strategy</button>
+    {% endifequal %}
+    {% ifequal filter_var "adventure" %}
+      <button class="w3-btn w3-green" type="submit" name="all" value="1">All</button>
+      <button class="w3-btn w3-green" type="submit" name="action" value="1">Action</button>
+      <button class="w3-btn w3-teal" type="submit" name="adventure" value="1">Adventure</button>
+      <button class="w3-btn w3-green" type="submit" name="arcade" value="1">Arcade</button>
+      <button class="w3-btn w3-green" type="submit" name="indie" value="1">Indie</button>
+      <button class="w3-btn w3-green" type="submit" name="multiplayer" value="1">Multiplayer</button>
+      <button class="w3-btn w3-green" type="submit" name="racing" value="1">Racing</button>
+      <button class="w3-btn w3-green" type="submit" name="rpg" value="1">RPG</button>
+      <button class="w3-btn w3-green" type="submit" name="simulation" value="1">Simulation</button>
+      <button class="w3-btn w3-green" type="submit" name="sports" value="1">Sports</button>
+      <button class="w3-btn w3-green" type="submit" name="strategy" value="1">Strategy</button>
+    {% endifequal %}
+    {% ifequal filter_var "arcade" %}
+      <button class="w3-btn w3-green" type="submit" name="all" value="1">All</button>
+      <button class="w3-btn w3-green" type="submit" name="action" value="1">Action</button>
+      <button class="w3-btn w3-green" type="submit" name="adventure" value="1">Adventure</button>
+      <button class="w3-btn w3-teal" type="submit" name="arcade" value="1">Arcade</button>
+      <button class="w3-btn w3-green" type="submit" name="indie" value="1">Indie</button>
+      <button class="w3-btn w3-green" type="submit" name="multiplayer" value="1">Multiplayer</button>
+      <button class="w3-btn w3-green" type="submit" name="racing" value="1">Racing</button>
+      <button class="w3-btn w3-green" type="submit" name="rpg" value="1">RPG</button>
+      <button class="w3-btn w3-green" type="submit" name="simulation" value="1">Simulation</button>
+      <button class="w3-btn w3-green" type="submit" name="sports" value="1">Sports</button>
+      <button class="w3-btn w3-green" type="submit" name="strategy" value="1">Strategy</button>
+    {% endifequal %}
+    {% ifequal filter_var "indie" %}
+      <button class="w3-btn w3-green" type="submit" name="all" value="1">All</button>
+      <button class="w3-btn w3-green" type="submit" name="action" value="1">Action</button>
+      <button class="w3-btn w3-green" type="submit" name="adventure" value="1">Adventure</button>
+      <button class="w3-btn w3-green" type="submit" name="arcade" value="1">Arcade</button>
+      <button class="w3-btn w3-teal" type="submit" name="indie" value="1">Indie</button>
+      <button class="w3-btn w3-green" type="submit" name="multiplayer" value="1">Multiplayer</button>
+      <button class="w3-btn w3-green" type="submit" name="racing" value="1">Racing</button>
+      <button class="w3-btn w3-green" type="submit" name="rpg" value="1">RPG</button>
+      <button class="w3-btn w3-green" type="submit" name="simulation" value="1">Simulation</button>
+      <button class="w3-btn w3-green" type="submit" name="sports" value="1">Sports</button>
+      <button class="w3-btn w3-green" type="submit" name="strategy" value="1">Strategy</button>
+    {% endifequal %}
+    {% ifequal filter_var "multiplayer" %}
+      <button class="w3-btn w3-green" type="submit" name="all" value="1">All</button>
+      <button class="w3-btn w3-green" type="submit" name="action" value="1">Action</button>
+      <button class="w3-btn w3-green" type="submit" name="adventure" value="1">Adventure</button>
+      <button class="w3-btn w3-green" type="submit" name="arcade" value="1">Arcade</button>
+      <button class="w3-btn w3-green" type="submit" name="indie" value="1">Indie</button>
+      <button class="w3-btn w3-teal" type="submit" name="multiplayer" value="1">Multiplayer</button>
+      <button class="w3-btn w3-green" type="submit" name="racing" value="1">Racing</button>
+      <button class="w3-btn w3-green" type="submit" name="rpg" value="1">RPG</button>
+      <button class="w3-btn w3-green" type="submit" name="simulation" value="1">Simulation</button>
+      <button class="w3-btn w3-green" type="submit" name="sports" value="1">Sports</button>
+      <button class="w3-btn w3-green" type="submit" name="strategy" value="1">Strategy</button>
+    {% endifequal %}
+    {% ifequal filter_var "racing" %}
+      <button class="w3-btn w3-green" type="submit" name="all" value="1">All</button>
+      <button class="w3-btn w3-green" type="submit" name="action" value="1">Action</button>
+      <button class="w3-btn w3-green" type="submit" name="adventure" value="1">Adventure</button>
+      <button class="w3-btn w3-green" type="submit" name="arcade" value="1">Arcade</button>
+      <button class="w3-btn w3-green" type="submit" name="indie" value="1">Indie</button>
+      <button class="w3-btn w3-green" type="submit" name="multiplayer" value="1">Multiplayer</button>
+      <button class="w3-btn w3-teal" type="submit" name="racing" value="1">Racing</button>
+      <button class="w3-btn w3-green" type="submit" name="rpg" value="1">RPG</button>
+      <button class="w3-btn w3-green" type="submit" name="simulation" value="1">Simulation</button>
+      <button class="w3-btn w3-green" type="submit" name="sports" value="1">Sports</button>
+      <button class="w3-btn w3-green" type="submit" name="strategy" value="1">Strategy</button>
+    {% endifequal %}
+    {% ifequal filter_var "rpg" %}
+      <button class="w3-btn w3-green" type="submit" name="all" value="1">All</button>
+      <button class="w3-btn w3-green" type="submit" name="action" value="1">Action</button>
+      <button class="w3-btn w3-green" type="submit" name="adventure" value="1">Adventure</button>
+      <button class="w3-btn w3-green" type="submit" name="arcade" value="1">Arcade</button>
+      <button class="w3-btn w3-green" type="submit" name="indie" value="1">Indie</button>
+      <button class="w3-btn w3-green" type="submit" name="multiplayer" value="1">Multiplayer</button>
+      <button class="w3-btn w3-green" type="submit" name="racing" value="1">Racing</button>
+      <button class="w3-btn w3-teal" type="submit" name="rpg" value="1">RPG</button>
+      <button class="w3-btn w3-green" type="submit" name="simulation" value="1">Simulation</button>
+      <button class="w3-btn w3-green" type="submit" name="sports" value="1">Sports</button>
+      <button class="w3-btn w3-green" type="submit" name="strategy" value="1">Strategy</button>
+    {% endifequal %}
+    {% ifequal filter_var "simulation" %}
+      <button class="w3-btn w3-green" type="submit" name="all" value="1">All</button>
+      <button class="w3-btn w3-green" type="submit" name="action" value="1">Action</button>
+      <button class="w3-btn w3-green" type="submit" name="adventure" value="1">Adventure</button>
+      <button class="w3-btn w3-green" type="submit" name="arcade" value="1">Arcade</button>
+      <button class="w3-btn w3-green" type="submit" name="indie" value="1">Indie</button>
+      <button class="w3-btn w3-green" type="submit" name="multiplayer" value="1">Multiplayer</button>
+      <button class="w3-btn w3-green" type="submit" name="racing" value="1">Racing</button>
+      <button class="w3-btn w3-green" type="submit" name="rpg" value="1">RPG</button>
+      <button class="w3-btn w3-teal" type="submit" name="simulation" value="1">Simulation</button>
+      <button class="w3-btn w3-green" type="submit" name="sports" value="1">Sports</button>
+      <button class="w3-btn w3-green" type="submit" name="strategy" value="1">Strategy</button>
+    {% endifequal %}
+    {% ifequal filter_var "sports" %}
+      <button class="w3-btn w3-green" type="submit" name="all" value="1">All</button>
+      <button class="w3-btn w3-green" type="submit" name="action" value="1">Action</button>
+      <button class="w3-btn w3-green" type="submit" name="adventure" value="1">Adventure</button>
+      <button class="w3-btn w3-green" type="submit" name="arcade" value="1">Arcade</button>
+      <button class="w3-btn w3-green" type="submit" name="indie" value="1">Indie</button>
+      <button class="w3-btn w3-green" type="submit" name="multiplayer" value="1">Multiplayer</button>
+      <button class="w3-btn w3-green" type="submit" name="racing" value="1">Racing</button>
+      <button class="w3-btn w3-green" type="submit" name="rpg" value="1">RPG</button>
+      <button class="w3-btn w3-green" type="submit" name="simulation" value="1">Simulation</button>
+      <button class="w3-btn w3-teal" type="submit" name="sports" value="1">Sports</button>
+      <button class="w3-btn w3-green" type="submit" name="strategy" value="1">Strategy</button>
+    {% endifequal %}
+    {% ifequal filter_var "strategy" %}
+      <button class="w3-btn w3-green" type="submit" name="all" value="1">All</button>
+      <button class="w3-btn w3-green" type="submit" name="action" value="1">Action</button>
+      <button class="w3-btn w3-green" type="submit" name="adventure" value="1">Adventure</button>
+      <button class="w3-btn w3-green" type="submit" name="arcade" value="1">Arcade</button>
+      <button class="w3-btn w3-green" type="submit" name="indie" value="1">Indie</button>
+      <button class="w3-btn w3-green" type="submit" name="multiplayer" value="1">Multiplayer</button>
+      <button class="w3-btn w3-green" type="submit" name="racing" value="1">Racing</button>
+      <button class="w3-btn w3-green" type="submit" name="rpg" value="1">RPG</button>
+      <button class="w3-btn w3-green" type="submit" name="simulation" value="1">Simulation</button>
+      <button class="w3-btn w3-green" type="submit" name="sports" value="1">Sports</button>
+      <button class="w3-btn w3-teal" type="submit" name="strategy" value="1">Strategy</button>
+    {% endifequal %}
+</form>
+</div>
+{% endblock %}
+
 {% block grid %}
   {% for obj in object_list %}
     <div class="column">
-      <img src="{{obj.image.url}}" alt='{{obj.title}} cover' style="width:100%" >
-      <div class="w3-container w3-white">
-        <b>Title: </b>{{ obj.title }}<br>
-        <b>Developer: </b>{{ obj.developer }}<br>
-        <b>Publisher: </b>{{ obj.publisher }}<br>
-        <b>Price: </b>{{ obj.get_price }}<br>
-        <b>Category: </b>{{ obj.get_category_title }}<br>
-        {% if obj.quantity > 0 %}
-          <b class="w3-green">Avilable</b><br>
-        {% else %}
-          <b class="w3-red">Out of stock</b><br>
-        {% endif %}
+      <div class="w3-hover-opacity" style="cursor: pointer;">
+        <img src="{{obj.image.url}}" alt='{{obj.title}} cover' style="width:100%">
+        <div class="w3-container w3-white">
+          <b>Title: </b>{{ obj.title }}<br>
+          <b>Developer: </b>{{ obj.developer }}<br>
+          <b>Publisher: </b>{{ obj.publisher }}<br>
+          <b>Price: </b>{{ obj.get_price }}<br>
+          <b>Category: </b>{{ obj.get_category_title }}<br>
+          {% if obj.quantity > 0 %}
+            <b class="w3-green">Avilable</b><br>
+          {% else %}
+            <b class="w3-red">Out of stock</b><br>
+          {% endif %}
+        </div>
       </div>
     </div>
   {% endfor %}
@@ -28,13 +186,13 @@
 <div class="w3-center w3-padding-32">
   <ul class="w3-pagination">
     {% if object_list.has_previous %}
-        <li><a class="w3-hover-gray" href="?{{ page_request_var }}=1">&laquo;</a></li>
-        <li><a class="w3-hover-gray" href="?{{ page_request_var }}={{ object_list.previous_page_number }}">&lt;</a></li>
+        <li><a class="w3-hover-gray" href="?page=1">&laquo;</a></li>
+        <li><a class="w3-hover-gray" href="?page={{ object_list.previous_page_number }}">&lt;</a></li>
     {% endif %}
     <li><a class="w3-black" href="#">{{ object_list.number }}</a></li>
     {% if object_list.has_next %}
-        <li><a class="w3-hover-gray" href="?{{ page_request_var }}={{ object_list.next_page_number }}">&gt;</a></li>
-        <li><a class="w3-hover-gray" href="?{{ page_request_var }}={{ object_list.paginator.num_pages }}">&raquo;</a></li>
+        <li><a class="w3-hover-gray" href="?page={{ object_list.next_page_number }}">&gt;</a></li>
+        <li><a class="w3-hover-gray" href="?page={{ object_list.paginator.num_pages }}">&raquo;</a></li>
     {% endif %}
   </ul>
 </div>
