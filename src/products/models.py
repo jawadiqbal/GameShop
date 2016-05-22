@@ -3,12 +3,15 @@ from __future__ import unicode_literals
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
-from django.db.models.signals import pre_save
+from django.db.models.signals import pre_save, post_save
 from django.utils import timezone
 
 from django.utils.text import slugify
 
 from django.db import models
+
+import string
+import random
 
 # Create your models here.
 
@@ -25,6 +28,23 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=5,decimal_places=2,null=True)
     category = models.CharField(max_length=120,null=True)
     quantity = models.IntegerField(default=10)
+    keys_size = models.IntegerField(default=0,null=True,blank=True)
+    keys = models.CharField(max_length=1200,null=True,blank=True)
+
+    # def id_generator(size=keys_size, chars=string.ascii_uppercase + string.digits):
+    #     return ''.join(random.choice(chars) for _ in range(size))
+
+    # def save(self, *args, **kwargs):
+    #     # try:
+    #     #     # prev_keys_size = self.keys_size
+    #     #     self.keys_size = self.quantity * 5
+    #     #     # print "prev key = " + prev_keys_size
+    #     #     # print "crnt key = " + self.keys_size
+    #     #     self.keys = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(self.keys_size))
+    #     # except TypeError:
+    #     #     pass
+    #
+    #     super(Product, self).save(*args, **kwargs)
 
     def __unicode__(self):
         return self.title
@@ -53,4 +73,21 @@ def pre_save_post_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
         instance.slug = create_slug(instance)
 
+    prev_keys_size = instance.keys_size
+    instance.keys_size = int(instance.quantity) * 5
+    if instance.keys_size > prev_keys_size :
+        add = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(instance.keys_size-prev_keys_size))
+        instance.keys = instance.keys + add
+    elif instance.keys_size < prev_keys_size :
+        sub = prev_keys_size - instance.keys_size
+        instance.keys = instance.keys[:-sub]
+
 pre_save.connect(pre_save_post_receiver, sender=Product)
+
+# def product_post_save_receiver(sender, instance, *args, **kwargs):
+#     print "works"
+#     instance.keys_size = int(instance.quantity) * 5
+#     print instance.keys_size
+#     instance.keys = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(instance.keys_size))
+#
+# post_save.connect(product_post_save_receiver, sender=Product)
