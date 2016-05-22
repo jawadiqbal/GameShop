@@ -31,21 +31,6 @@ class Product(models.Model):
     keys_size = models.IntegerField(default=0,null=True,blank=True)
     keys = models.CharField(max_length=1200,null=True,blank=True)
 
-    # def id_generator(size=keys_size, chars=string.ascii_uppercase + string.digits):
-    #     return ''.join(random.choice(chars) for _ in range(size))
-
-    # def save(self, *args, **kwargs):
-    #     # try:
-    #     #     # prev_keys_size = self.keys_size
-    #     #     self.keys_size = self.quantity * 5
-    #     #     # print "prev key = " + prev_keys_size
-    #     #     # print "crnt key = " + self.keys_size
-    #     #     self.keys = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(self.keys_size))
-    #     # except TypeError:
-    #     #     pass
-    #
-    #     super(Product, self).save(*args, **kwargs)
-
     def __unicode__(self):
         return self.title
 
@@ -83,11 +68,3 @@ def pre_save_post_receiver(sender, instance, *args, **kwargs):
         instance.keys = instance.keys[:-sub]
 
 pre_save.connect(pre_save_post_receiver, sender=Product)
-
-# def product_post_save_receiver(sender, instance, *args, **kwargs):
-#     print "works"
-#     instance.keys_size = int(instance.quantity) * 5
-#     print instance.keys_size
-#     instance.keys = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(instance.keys_size))
-#
-# post_save.connect(product_post_save_receiver, sender=Product)

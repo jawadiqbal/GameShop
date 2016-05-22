@@ -12,7 +12,7 @@ class ProductModelAdmin(admin.ModelAdmin):
 
 admin.site.register(Product, ProductModelAdmin)
 
-# Product.objects.get(category__icontains="Action") to find action games
+# Product.objects.filter(category__icontains="Action") to find action games
 
 # use foo[-N:] to get last N characters. key length is 5 so should use N = 5
 # update quantity after that
