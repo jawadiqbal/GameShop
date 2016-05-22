@@ -5,10 +5,14 @@ from django.contrib import admin
 from .models import Product
 
 class ProductModelAdmin(admin.ModelAdmin):
-	list_display = ["title", "developer", "publisher", "quantity", "price"]
+	list_display = ["title", "slug", "keys", "quantity", "price"]
 	search_fields = ["title", "developer", "publisher"]
 	class Meta:
 		model = Product
 
 admin.site.register(Product, ProductModelAdmin)
-# Product.objects.get(category__icontains="Action") to find action games
+
+# Product.objects.filter(category__icontains="Action") to find action games
+
+# use foo[-N:] to get last N characters. key length is 5 so should use N = 5
+# update quantity after that
