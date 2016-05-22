@@ -41,8 +41,7 @@ def product_home(request):
 
 
     paginator = Paginator(queryset_list, 8) # Show 25 contacts per page
-    page_request_var = "page"
-    page = (request.GET.get(page_request_var))
+    page = (request.GET.get(filter_var))
     #print page
     try:
         queryset = paginator.page(page)
@@ -54,7 +53,7 @@ def product_home(request):
         queryset = paginator.page(paginator.num_pages)
     context = {
         "object_list": queryset,
-        "title": "Game shop",
+        "title": "GameShop",
         "filter_var": filter_var,
         "page_request_var": page,
     }
