@@ -5,7 +5,7 @@ from django.contrib import admin
 from .models import Product
 
 class ProductModelAdmin(admin.ModelAdmin):
-	list_display = ["title", "slug", "keys", "quantity", "price"]
+	list_display = ["title", "users_rated", "avg_rating", "quantity", "price"]
 	search_fields = ["title", "developer", "publisher"]
 	class Meta:
 		model = Product

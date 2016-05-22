@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
-from django.db.models.signals import pre_save, post_save
+from django.db.models.signals import pre_save
 from django.utils import timezone
 
 from django.utils.text import slugify
@@ -30,6 +30,8 @@ class Product(models.Model):
     quantity = models.IntegerField(default=10)
     keys_size = models.IntegerField(default=0,null=True,blank=True)
     keys = models.CharField(max_length=1200,null=True,blank=True)
+    avg_rating = models.DecimalField(max_digits=3,decimal_places=2,null=True)
+    users_rated = models.IntegerField(default=0,null=True)
 
     def __unicode__(self):
         return self.title
@@ -54,7 +56,7 @@ def create_slug(instance, new_slug=None):
         return create_slug(instance, new_slug=new_slug)
     return slug
 
-def pre_save_post_receiver(sender, instance, *args, **kwargs):
+def pre_save_product_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
         instance.slug = create_slug(instance)
 
@@ -67,4 +69,4 @@ def pre_save_post_receiver(sender, instance, *args, **kwargs):
         sub = prev_keys_size - instance.keys_size
         instance.keys = instance.keys[:-sub]
 
-pre_save.connect(pre_save_post_receiver, sender=Product)
+pre_save.connect(pre_save_product_receiver, sender=Product)
