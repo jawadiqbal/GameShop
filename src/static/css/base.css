@@ -1,29 +1,20 @@
 <style>
-.header {
-    background-color:black;
-    color:white;
-    text-align:center;
-    padding:5px;
+input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
 }
-.nav {
-    line-height:30px;
-    background-color:#eeeeee;
-    height:300px;
-    width:100px;
-    float:left;
-    padding:5px;
-}
-.section {
-    width:1000px;
-    background-color:#eeeede;
-    float:left;
-    padding:10px;
-}
-.footer {
-    background-color:black;
-    color:white;
-    clear:both;
-    text-align:center;
-    padding:5px;
+
+input[type=text]:focus {
+    width: 100%;
 }
 </style>

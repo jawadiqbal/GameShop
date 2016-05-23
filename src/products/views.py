@@ -63,7 +63,6 @@ def product_home(request):
 # this func is not being called. i dont know why
 @csrf_protect
 def product_detail(request, slug=None):
-    print "balsal"
     obj = get_object_or_404(Product, slug=slug)
     context = {
         "object": obj,

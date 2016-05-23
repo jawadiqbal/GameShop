@@ -171,15 +171,22 @@
           <b>Publisher: </b>{{ obj.publisher }}<br>
           <b>Price: </b>{{ obj.get_price }}<br>
           <b>Category: </b>{{ obj.get_category_title }}<br>
-          {% if obj.quantity > 0 %}
-            <b class="w3-green">Avilable</b><br>
-          {% else %}
-            <b class="w3-red">Out of stock</b><br>
-          {% endif %}
-          <!--<form action="{{ products.views.product_detail }}" method="post">{% csrf_token %}-->
-            <!--<button class="w3-btn w3-green" name="obj_id" value="{{ obj.id }}">Detail</button>-->
-            <a href="/products/{{ obj.slug }}" class="w3-btn w3-green" role="button">Detail</a>
-          <!--</form>-->
+
+        </div>
+        <div class="w3-row">
+          <div class="w3-container w3-half">
+            {% if obj.quantity > 0 %}
+              <b class="w3-btn w3-green">Available</b><br>
+            {% else %}
+              <b class="w3-btn w3-red">Out of stock</b><br>
+            {% endif %}
+          </div>
+        <!--<form action="{{ products.views.product_detail }}" method="post">{% csrf_token %}-->
+          <!--<button class="w3-btn w3-green" name="obj_id" value="{{ obj.id }}">Detail</button>-->
+          <div class="w3-container w3-half">
+            <a href="/products/{{ obj.slug }}" class="w3-btn w3-blue" role="button">Details</a>
+          </div>
+        <!--</form>-->
         </div>
       </div>
     </div>

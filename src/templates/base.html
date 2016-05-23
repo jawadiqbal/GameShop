@@ -12,6 +12,7 @@
 
 
         {% block stylesheets %}
+          <link rel="stylesheet" href='{% static "css/base.css" %}'>
           <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
           <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
@@ -69,15 +70,16 @@
         <header class="w3-container">
           <a href="#"><img src='{% static "img/GS.png" %}' style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
           <span class="w3-opennav w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
-          <h1><font color="#33cc33"><b>GameShop</b></font></h1>
-          <!-- search bar
-              <div id="tfheader">
-		          <form id="tfnewsearch" method="get" action="http://www.google.com">
-		              <input type="text" class="tftextinput" name="q" size="21" maxlength="20">
-                  <input type="submit" value="search" class="tfbutton">
-		          </form>
-	            <div class="tfclear"></div>
-	        </div>-->
+          <div class="w3-row">
+            <div class="w3-container w3-third"><h1><font color="#33cc33"><b>GameShop</b></font></h1></div>
+            <div class="w3-container w3-third">
+              <p><h1></h1></p>
+              <form id="search-form" name="search" action="/products" method="get">
+                <input id="search-input" name="search" type="text" placeholder="Search">
+                <button class="w3-btn w3-blue" name="submit" style="float:right">Search</button>
+              </form>
+            </div>
+          </div>
           {% block filter %}
           {% endblock %}
         </header>
