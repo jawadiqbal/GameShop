@@ -19,8 +19,10 @@ from django.conf.urls import url
 from django.contrib import admin
 
 urlpatterns = [
+    url(r'^$', "products.views.product_home"),
     url(r'^admin/', admin.site.urls),
     url(r'^products/$', "products.views.product_home"),
+    url(r'^products/(?P<slug>[\w-]+)/$', "products.views.product_detail"),
 ]
 
 if settings.DEBUG:

@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.decorators.csrf import csrf_protect
 
 # Create your views here.
 from .models import Product
@@ -58,3 +59,14 @@ def product_home(request):
         "page_request_var": page,
     }
     return render(request, "index.html", context)
+
+# this func is not being called. i dont know why
+@csrf_protect
+def product_detail(request, slug=None):
+    print "balsal"
+    obj = get_object_or_404(Product, slug=slug)
+    context = {
+        "object": obj,
+        "title": obj.title,
+    }
+    return render(request, "detail.html", context)

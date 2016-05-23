@@ -160,9 +160,10 @@
 {% endblock %}
 
 {% block grid %}
+<div class="row small-up-2 medium-up-3 large-up-4">
   {% for obj in object_list %}
     <div class="column">
-      <div class="w3-hover-opacity" style="cursor: pointer;">
+      <div class="w3-container w3-white">
         <img src="{{obj.image.url}}" alt='{{obj.title}} cover' style="width:100%">
         <div class="w3-container w3-white">
           <b>Title: </b>{{ obj.title }}<br>
@@ -175,11 +176,15 @@
           {% else %}
             <b class="w3-red">Out of stock</b><br>
           {% endif %}
+          <!--<form action="{{ products.views.product_detail }}" method="post">{% csrf_token %}-->
+            <!--<button class="w3-btn w3-green" name="obj_id" value="{{ obj.id }}">Detail</button>-->
+            <a href="/products/{{ obj.slug }}" class="w3-btn w3-green" role="button">Detail</a>
+          <!--</form>-->
         </div>
       </div>
     </div>
   {% endfor %}
-
+</div>
 {% endblock %} <!-- end grid -->
 
 {% block pagination %}

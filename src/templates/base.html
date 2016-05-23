@@ -7,7 +7,7 @@
         {% block meta_tags %}{% endblock %}
 
         <title>
-            {% block title %} Game shop {% endblock %}
+            {% block title %} GameShop {% endblock %}
         </title>
 
 
@@ -83,10 +83,9 @@
         </header>
 
         <!-- Photo Grid-->
-        <div class="row small-up-2 medium-up-3 large-up-4">
-          {% block grid %}
-          {% endblock %}
-        </div>
+        {% block grid %}
+        {% endblock %}
+
 
         <!-- Pagination -->
         {% block pagination %}
@@ -94,7 +93,7 @@
 
         <!-- Footer -->
         <footer class="w3-container w3-padding-32 w3-white">
-
+          <p>My footer information</p>
         </footer>
 
       <!-- End page content -->
