@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf import settings
 from django.conf.urls.static import static
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^products/$', "products.views.product_home"),
     url(r'^products/(?P<slug>[\w-]+)/$', "products.views.product_detail"),
+    url(r'^accounts/', include('allauth.urls')),
 ]
 
 if settings.DEBUG:
