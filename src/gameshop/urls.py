@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^products/$', "products.views.product_home"),
     url(r'^products/(?P<slug>[\w-]+)/$', "products.views.product_detail"),
-    url(r'^accounts/', include('allauth.urls')),
+    # url(r'^accounts/', include('allauth.urls')),
 ]
 
 if settings.DEBUG:
