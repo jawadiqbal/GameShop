@@ -30,7 +30,7 @@ class Product(models.Model):
     quantity = models.IntegerField(default=10)
     keys_size = models.IntegerField(default=0,null=True,blank=True)
     keys = models.CharField(max_length=1200,null=True,blank=True)
-    avg_rating = models.DecimalField(max_digits=2,decimal_places=1,null=True)
+    avg_rating = models.DecimalField(max_digits=2,decimal_places=1,null=True,blank=True)
     users_rated = models.IntegerField(default=0,null=True)
     keys_sold = models.IntegerField(default=0,null=True)
 
