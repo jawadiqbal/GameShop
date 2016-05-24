@@ -13,3 +13,6 @@ class AddProductForm(forms.ModelForm):
             "category",
             "quantity",
         ]
+
+class CronForm(forms.Form):
+    games = forms.ModelChoiceField(queryset=Product.objects.all().order_by('title'))

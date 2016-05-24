@@ -5,13 +5,13 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.decorators.csrf import csrf_protect
 from django.db.models import Q
 from .form_add_product import AddProductForm
+from .form_add_product import CronForm
 
 
 # Create your views here.
 from .models import Product
 
 def product_home(request):
-    print "balsal"
     filter_var = "all"
     queryset_list = Product.objects.all()
     if (request.GET.get('action')):
@@ -87,13 +87,24 @@ def product_detail(request, slug=None):
 
 def add_product(request):
     form = AddProductForm(request.POST or None)
+    form2 = CronForm(request.POST or None)
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
         messages.success(request, "Successfully Added")
     else:
         messages.error(request, "Not Successfully Added")
+
+    if form2.is_valid():
+        instance = form2.save(commit=False)
+        add = request.POST['add']
+        instance.quantity += add
+        instance.save()
+        messages.success(request, "Successfully Updated")
+    else:
+        messages.error(request, "Not Successfully Updated")
     context = {
         "form": form,
+        "form2": form2,
     }
     return render(request, "stuff.html", context)

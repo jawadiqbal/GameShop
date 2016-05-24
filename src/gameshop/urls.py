@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^products/$', product_home),
     url(r'^products/(?P<slug>[\w-]+)/$', product_detail),
     url(r'^stuff/$', add_product),
+
     # url(r'^accounts/', include('allauth.urls')),
 ]
 
