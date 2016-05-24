@@ -32,6 +32,7 @@ class Product(models.Model):
     keys = models.CharField(max_length=1200,null=True,blank=True)
     avg_rating = models.DecimalField(max_digits=2,decimal_places=1,null=True)
     users_rated = models.IntegerField(default=0,null=True)
+    keys_sold = models.IntegerField(default=0,null=True)
 
     def __unicode__(self):
         return self.title
