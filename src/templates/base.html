@@ -49,6 +49,9 @@
         </div>
 
         {% block navContent %}
+          <a href="#" class="w3-padding w3-text-teal">HOME</a>
+          <a href="#" class="w3-padding">ABOUT</a>
+          <a href="#" class="w3-padding">CONTACT</a>
         {% endblock %}
 
         <div class="w3-section w3-padding-top w3-large">
@@ -72,13 +75,49 @@
           <span class="w3-opennav w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
           <div class="w3-row">
             <div class="w3-container w3-third"><h1><font color="#33cc33"><b>GameShop</b></font></h1></div>
+            {% block searchbar %}
+            <div class="w3-container w3-third"></div>
+            {% endblock %}
+
+            {% block login %}
             <div class="w3-container w3-third">
               <p><h1></h1></p>
-              <form id="search-form" name="search" action="/products" method="get">
-                <input id="search-input" name="search" type="text" placeholder="Search">
-                <button class="w3-btn w3-blue" name="submit" style="float:right">Search</button>
-              </form>
+              <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-green">Login</button>
             </div>
+
+            <div id="id01" class="w3-modal">
+              <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn w3-hover-red w3-container w3-padding-8 w3-display-topright">&times;</span>
+              <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width:600px">
+
+                <div class="w3-center"><br>
+                  <img src='{% static "img/avatar.png" %}' alt="Avatar" style="width:20%" class="w3-circle w3-margin-top">
+                </div>
+
+                <div class="w3-container">
+                  <div class="w3-section">
+                    <label><b>Username</b></label>
+                    <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username">
+
+                    <label><b>Password</b></label>
+                    <input class="w3-input w3-border" type="password" placeholder="Enter Password">
+
+                    <button class="w3-btn w3-btn-block w3-green">Login</button>
+                    <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me
+                  </div>
+                </div>
+
+                <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                  <div class="w3-row">
+                    <div class="w3-container w3-third"><button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-btn w3-red">Cancel</button></div>
+                    <div class="w3-container w3-third"><a href="#">Forgot password?</a></div>
+                    <div class="w3-container w3-third"><a href="#">Register new account</a></div>
+                  </div>
+                </div>
+
+              </div>
+            </div> <!-- end of div modal -->
+
+            {% endblock %}
           </div>
           {% block filter %}
           {% endblock %}

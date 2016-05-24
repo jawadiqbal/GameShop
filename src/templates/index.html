@@ -3,10 +3,14 @@
 
 {% block title %} {{ title }} {% endblock %}
 
-{% block navContent %}
-  <a href="#" class="w3-padding w3-text-teal">HOME</a>
-  <a href="#" class="w3-padding">ABOUT</a>
-  <a href="#" class="w3-padding">CONTACT</a>
+{% block searchbar %}
+<div class="w3-container w3-third">
+  <p><h1></h1></p>
+  <form action="{{ products.views.product_home }}" method="get">
+    <div class="w3-container w3-twothird"><input name="q" type="text" placeholder="Search" value="{{request.GET.q}}"></div>
+    <div class="w3-container w3-third"><input class="w3-btn w3-blue" type="submit" value="Search" style="float:right"></div>
+  </form>
+</div>
 {% endblock %}
 
 {% block filter %}
@@ -155,6 +159,19 @@
       <button class="w3-btn w3-green" type="submit" name="sports" value="1">Sports</button>
       <button class="w3-btn w3-teal" type="submit" name="strategy" value="1">Strategy</button>
     {% endifequal %}
+    {% ifequal filter_var "q" %}
+      <button class="w3-btn w3-green" type="submit" name="all" value="1">All</button>
+      <button class="w3-btn w3-green" type="submit" name="action" value="1">Action</button>
+      <button class="w3-btn w3-green" type="submit" name="adventure" value="1">Adventure</button>
+      <button class="w3-btn w3-green" type="submit" name="arcade" value="1">Arcade</button>
+      <button class="w3-btn w3-green" type="submit" name="indie" value="1">Indie</button>
+      <button class="w3-btn w3-green" type="submit" name="multiplayer" value="1">Multiplayer</button>
+      <button class="w3-btn w3-green" type="submit" name="racing" value="1">Racing</button>
+      <button class="w3-btn w3-green" type="submit" name="rpg" value="1">RPG</button>
+      <button class="w3-btn w3-green" type="submit" name="simulation" value="1">Simulation</button>
+      <button class="w3-btn w3-green" type="submit" name="sports" value="1">Sports</button>
+      <button class="w3-btn w3-green" type="submit" name="strategy" value="1">Strategy</button>
+    {% endifequal %}
 </form>
 </div>
 {% endblock %}
@@ -169,9 +186,9 @@
           <b>Title: </b>{{ obj.title }}<br>
           <b>Developer: </b>{{ obj.developer }}<br>
           <b>Publisher: </b>{{ obj.publisher }}<br>
-          <b>Price: </b>{{ obj.get_price }}<br>
           <b>Category: </b>{{ obj.get_category_title }}<br>
-
+          <b>Rating: </b>{{ obj.avg_rating }}<br>
+          <b>Price: </b>{{ obj.get_price }}<br>
         </div>
         <div class="w3-row">
           <div class="w3-container w3-half">

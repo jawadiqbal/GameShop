@@ -2,11 +2,13 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.decorators.csrf import csrf_protect
+from django.db.models import Q
 
 # Create your views here.
 from .models import Product
 
 def product_home(request):
+    print "balsal"
     filter_var = "all"
     queryset_list = Product.objects.all()
     if (request.GET.get('action')):
@@ -40,6 +42,15 @@ def product_home(request):
         queryset_list = Product.objects.filter(category__icontains="strategy")
         filter_var = "strategy"
 
+    query = request.GET.get("q")
+    if query:
+        queryset_list = queryset_list.filter(
+                Q(title__icontains=query) |
+                Q(developer__icontains=query) |
+                Q(publisher__icontains=query) |
+                Q(category__icontains=query)
+            ).distinct()
+        filter_var = "q"
 
     paginator = Paginator(queryset_list, 8) # Show 25 contacts per page
     page = (request.GET.get(filter_var))
