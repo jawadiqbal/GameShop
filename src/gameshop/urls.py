@@ -21,7 +21,9 @@ from django.contrib import admin
 from products.views import (
     product_home,
     product_detail,
+    stuff_f,
     add_product,
+    restock,
     )
 
 urlpatterns = [
@@ -29,8 +31,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^products/$', product_home),
     url(r'^products/(?P<slug>[\w-]+)/$', product_detail),
-    url(r'^stuff/$', add_product),
-
+    url(r'^stuff/$', stuff_f),
+    url(r'^stuff/add_product/$', add_product),
+    url(r'^stuff/restock/$', restock),
     # url(r'^accounts/', include('allauth.urls')),
 ]
 

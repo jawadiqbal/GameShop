@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %} Stuff {% endblock %}
+
+{% block filter %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
+
+{% block grid %}
+<div class="w3-row-padding">
+  <div class="w3-col w3-container s12 m6 l6">
+    <h2 class="w3-center">Restock an existing product</h2>
+    <form action="{{ products.views.restock }}" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input class="w3-btn w3-green" type="submit" value="Submit">
+    </form>
+  </div>
+</div>
+
+{% endblock %}

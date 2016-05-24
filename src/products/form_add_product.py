@@ -14,5 +14,11 @@ class AddProductForm(forms.ModelForm):
             "quantity",
         ]
 
-class CronForm(forms.Form):
-    games = forms.ModelChoiceField(queryset=Product.objects.all().order_by('title'))
+class CronForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = [
+            "add_keys"
+        ]
+
+    game = forms.ModelChoiceField(queryset=Product.objects.all().order_by('title'))

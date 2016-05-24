@@ -35,6 +35,7 @@ class Product(models.Model):
     avg_rating = models.DecimalField(max_digits=2,decimal_places=1,null=True,blank=True)
     users_rated = models.IntegerField(default=0,null=True)
     keys_sold = models.IntegerField(default=0,null=True)
+    add_keys = models.IntegerField(default=0,null=True)
 
     def __unicode__(self):
         return self.title
@@ -62,6 +63,10 @@ def create_slug(instance, new_slug=None):
 def pre_save_product_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
         instance.slug = create_slug(instance)
+
+    prev_quantity = instance.quantity
+    instance.quantity = instance.quantity + instance.add_keys
+    add_keys = 0
 
     prev_keys_size = instance.keys_size
     instance.keys_size = int(instance.quantity) * 5

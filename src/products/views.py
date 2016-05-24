@@ -84,27 +84,30 @@ def product_detail(request, slug=None):
     }
     return render(request, "detail.html", context)
 
+def stuff_f(request):
+    return render(request, "stuff.html",{})
 
 def add_product(request):
     form = AddProductForm(request.POST or None)
-    form2 = CronForm(request.POST or None)
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
         messages.success(request, "Successfully Added")
-    else:
-        messages.error(request, "Not Successfully Added")
-
-    if form2.is_valid():
-        instance = form2.save(commit=False)
-        add = request.POST['add']
-        instance.quantity += add
-        instance.save()
-        messages.success(request, "Successfully Updated")
-    else:
-        messages.error(request, "Not Successfully Updated")
     context = {
         "form": form,
-        "form2": form2,
     }
-    return render(request, "stuff.html", context)
+    return render(request, "add_product.html", context)
+
+
+def restock(request):
+    form = CronForm(request.POST or None)
+    if form.is_valid():
+        instance = form.cleaned_data[ 'game' ]
+        temp = form.cleaned_data[ 'add_keys' ]
+        instance.add_keys = temp
+        instance.save()
+        messages.success(request, "Successfully Updated")
+    context = {
+        "form": form,
+    }
+    return render(request, "restock.html", context)
