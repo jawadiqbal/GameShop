@@ -6,6 +6,8 @@ from django.db import models
 from django.db.models.signals import pre_save
 from django.utils import timezone
 
+from django.utils.encoding import smart_text
+
 from django.utils.text import slugify
 
 from django.db import models
@@ -65,7 +67,9 @@ def pre_save_product_receiver(sender, instance, *args, **kwargs):
     instance.keys_size = int(instance.quantity) * 5
     if instance.keys_size > prev_keys_size :
         add = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(instance.keys_size-prev_keys_size))
-        instance.keys = instance.keys + add
+        if not instance.keys:
+            instance.keys=""
+        instance.keys = str(instance.keys) + add
     elif instance.keys_size < prev_keys_size :
         sub = prev_keys_size - instance.keys_size
         instance.keys = instance.keys[:-sub]

@@ -1,8 +1,11 @@
+from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.decorators.csrf import csrf_protect
 from django.db.models import Q
+from .form_add_product import AddProductForm
+
 
 # Create your views here.
 from .models import Product
@@ -80,3 +83,17 @@ def product_detail(request, slug=None):
         "title": obj.title,
     }
     return render(request, "detail.html", context)
+
+
+def add_product(request):
+    form = AddProductForm(request.POST or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        messages.success(request, "Successfully Added")
+    else:
+        messages.error(request, "Not Successfully Added")
+    context = {
+        "form": form,
+    }
+    return render(request, "stuff.html", context)

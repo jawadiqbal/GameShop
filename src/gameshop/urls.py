@@ -18,11 +18,18 @@ from django.conf.urls.static import static
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from products.views import (
+    product_home,
+    product_detail,
+    add_product,
+    )
+
 urlpatterns = [
-    url(r'^$', "products.views.product_home"),
+    url(r'^$', product_home),
     url(r'^admin/', admin.site.urls),
-    url(r'^products/$', "products.views.product_home"),
-    url(r'^products/(?P<slug>[\w-]+)/$', "products.views.product_detail"),
+    url(r'^products/$', product_home),
+    url(r'^products/(?P<slug>[\w-]+)/$', product_detail),
+    url(r'^stuff/$', add_product),
     # url(r'^accounts/', include('allauth.urls')),
 ]
 
