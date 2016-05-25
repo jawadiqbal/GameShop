@@ -84,8 +84,7 @@ def product_detail(request, slug=None):
     }
     return render(request, "detail.html", context)
 
-def stuff_f(request):
-    return render(request, "stuff.html",{})
+
 
 def add_product(request):
     form = AddProductForm(request.POST or None)
@@ -111,3 +110,15 @@ def restock(request):
         "form": form,
     }
     return render(request, "restock.html", context)
+
+def staff(request):
+    return render(request, "staff.html",{})
+
+def profile(request):
+    return render(request, "profile.html",{})
+
+def about(request):
+    return render(request, "about.html",{})
+
+def contact(request):
+    return render(request, "contact.html",{})

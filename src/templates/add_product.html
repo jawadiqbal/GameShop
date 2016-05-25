@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "rbase.html" %}
 {% load staticfiles %}
 
 {% block title %} Stuff {% endblock %}
@@ -14,13 +14,15 @@
 {% endblock %}
 
 {% block grid %}
-<div class="w3-row-padding">
-  <div class="w3-col w3-container s12 m6 l6">
-    <h2 class="w3-center">Add a new product</h2>
-    <form action="{{ products.views.add_product }}" method="post">{% csrf_token %}
-      {{ form.as_p }}
-      <input class="w3-btn w3-green" type="submit" value="Add product">
-    </form>
+<div class="w3-container">
+  <div class="w3-row-padding">
+    <div class="w3-col w3-container s12 m6 l6">
+      <h2 class="w3-center">Add a new product</h2>
+      <form action="{{ products.views.add_product }}" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input class="w3-btn w3-green" type="submit" value="Add product">
+      </form>
+    </div>
   </div>
 </div>
 

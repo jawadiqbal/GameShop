@@ -1,0 +1,18 @@
+{% extends "rbase.html" %}
+{% load staticfiles %}
+
+{% block title %} Profile {% endblock %}
+
+{% block filter %}
+{% endblock %}
+
+{% block grid %}
+<div class="w3-container">
+  {% if user %}
+    <h1>Welcome, {{user.username}}</h1>
+    <a href="{% url 'account_change_password' %}">Change password</a><br>
+    <a href="{% url 'account_email' %}">Change email</a>
+  {% endif %}
+</div>
+
+{% endblock %}

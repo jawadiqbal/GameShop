@@ -1,0 +1,132 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% block meta_tags %}{% endblock %}
+
+        <title>
+            {% block title %} GameShop {% endblock %}
+        </title>
+
+
+        {% block stylesheets %}
+          <link rel="stylesheet" href='{% static "css/base.css" %}'>
+          <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+          <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+          <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+        {% endblock %}
+
+        <style>
+            /*for custom styling*/
+            {% block style %}
+              html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+              .w3-sidenav a,.w3-sidenav h4 {font-weight:bold}
+            {% endblock %}
+        </style>
+    </head>
+
+    <body class="w3-light-grey w3-content" style="max-width:1600px">
+      <!-- Sidenav/menu -->
+      <nav class="w3-sidenav w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;"><br>
+        <div class="w3-container">
+          <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding" title="close menu">
+          <i class="fa fa-remove"></i>
+          </a>
+          <a href="/"><img src='{% static "img/GS.png" %}' style="width:45%;" class="w3-round"></a><br><br>
+        </div>
+
+        {% block navContent %}
+          <a href="/" class="w3-padding w3-text-teal">HOME</a>
+          <a href="/about/" class="w3-padding">ABOUT</a>
+          <a href="/contact/" class="w3-padding">CONTACT US</a>
+          {% if request.user.is_staff %}
+          <a href="/staff/" class="w3-padding">STAFF SECTION</a>
+          {% endif %}
+        {% endblock %}
+
+        <div class="w3-section w3-padding-top w3-large">
+          <a href="#" class="w3-hover-white w3-hover-text-indigo w3-show-inline-block"><i class="fa fa-facebook-official"></i></a>
+          <a href="#" class="w3-hover-white w3-hover-text-red w3-show-inline-block"><i class="fa fa-pinterest-p"></i></a>
+          <a href="#" class="w3-hover-white w3-hover-text-light-blue w3-show-inline-block"><i class="fa fa-twitter"></i></a>
+          <a href="#" class="w3-hover-white w3-hover-text-grey w3-show-inline-block"><i class="fa fa-flickr"></i></a>
+          <a href="#" class="w3-hover-white w3-hover-text-indigo w3-show-inline-block"><i class="fa fa-linkedin"></i></a>
+        </div>
+      </nav>
+
+      <!-- Overlay effect when opening sidenav on small screens -->
+      <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu"></div>
+
+      <!-- !PAGE CONTENT! -->
+      <div class="w3-main" style="margin-left:300px">
+
+        <!-- Header -->
+        <header class="w3-container">
+          <a href="#"><img src='{% static "img/GS.png" %}' style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
+          <span class="w3-opennav w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+          <div class="w3-row">
+            <div class="w3-container w3-third"><h1><font color="#33cc33"><b>GameShop</b></font></h1></div>
+            {% block searchbar %}
+            <div class="w3-container w3-third"></div>
+            {% endblock %}
+
+            {% block login %}
+              {% if request.user.is_authenticated %}
+              <div class="w3-container w3-third">
+                <p><h1></h1></p>
+                <a href="/accounts/profile/" class="w3-btn w3-green" >{{user.username}}</a>
+                <a href="/accounts/logout/" class="w3-btn w3-green" >Logout</a>
+              </div>
+              {% else %}
+              <div class="w3-container w3-third">
+                <p><h1></h1></p>
+                <a class="w3-btn w3-green" href="/accounts/login">Login</a>
+                <a class="w3-btn w3-green" href="/accounts/signup">Signup</a>
+              </div>
+              {% endif %}
+            {% endblock %}
+          </div>
+          {% block filter %}
+          {% endblock %}
+        </header>
+
+        <!-- Photo Grid-->
+        {% block grid %}
+        {% endblock %}
+
+
+        <!-- Pagination -->
+        {% block pagination %}
+        {% endblock %}
+
+        <!-- Footer -->
+
+
+      <!-- End page content -->
+      </div>
+
+      {% block script %}
+      {% endblock %}
+
+      <script>
+        // Script to open and close sidenav
+        function w3_open() {
+          document.getElementsByClassName("w3-sidenav")[0].style.display = "block";
+          document.getElementsByClassName("w3-overlay")[0].style.display = "block";
+        }
+
+        function w3_close() {
+          document.getElementsByClassName("w3-sidenav")[0].style.display = "none";
+          document.getElementsByClassName("w3-overlay")[0].style.display = "none";
+        }
+        </script>
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+        <script>
+              $(document).foundation();
+            </script>
+    </body>
+
+</html>

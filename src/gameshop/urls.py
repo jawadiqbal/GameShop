@@ -21,9 +21,12 @@ from django.contrib import admin
 from products.views import (
     product_home,
     product_detail,
-    stuff_f,
+    staff,
     add_product,
     restock,
+    profile,
+    about,
+    contact,
     )
 
 urlpatterns = [
@@ -31,10 +34,13 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^products/$', product_home),
     url(r'^products/(?P<slug>[\w-]+)/$', product_detail),
-    url(r'^stuff/$', stuff_f),
-    url(r'^stuff/add_product/$', add_product),
-    url(r'^stuff/restock/$', restock),
-    # url(r'^accounts/', include('allauth.urls')),
+    url(r'^staff/$', staff),
+    url(r'^staff/add_product/$', add_product),
+    url(r'^staff/restock/$', restock),
+    url(r'^accounts/', include('allauth.urls')),
+    url(r'^accounts/profile/', profile),
+    url(r'^about/$', about),
+    url(r'^contact/$', contact),
 ]
 
 if settings.DEBUG:
