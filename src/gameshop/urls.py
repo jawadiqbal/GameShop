@@ -27,6 +27,8 @@ from products.views import (
     profile,
     about,
     contact,
+    buy_now,
+    purchase,
     )
 
 urlpatterns = [
@@ -41,6 +43,8 @@ urlpatterns = [
     url(r'^accounts/profile/', profile),
     url(r'^about/$', about),
     url(r'^contact/$', contact),
+    url(r'^products/(?P<slug>[\w-]+)/purchase/$', buy_now),
+    url(r'^products/(?P<slug>[\w-]+)/purchase/done/$', purchase),
 ]
 
 if settings.DEBUG:

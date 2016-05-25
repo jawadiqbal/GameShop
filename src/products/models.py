@@ -23,7 +23,7 @@ def upload_location(instance, filename):
 
 class Product(models.Model):
     title = models.CharField(max_length=120)
-    image = models.FileField(upload_to=upload_location,null=True,blank=True)
+    image = models.FileField(upload_to=upload_location,null=True, blank=True)
     slug = models.SlugField(unique=True,null=True,blank=True)
     developer = models.CharField(max_length=120,null=True)
     publisher = models.CharField(max_length=120,null=True)

@@ -22,3 +22,19 @@ class CronForm(forms.ModelForm):
         ]
 
     game = forms.ModelChoiceField(queryset=Product.objects.all().order_by('title'))
+
+
+class Rating(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = [
+            "title",
+            "image",
+            "developer",
+            "publisher",
+            "price",
+            "category",
+            "quantity",
+            "avg_rating",
+            "users_rated",
+        ]

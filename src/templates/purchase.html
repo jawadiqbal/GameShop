@@ -11,14 +11,27 @@
 <h1 class="w3-padding">{{ object.title }}</h1>
 <div class="w3-row">
   <div class="w3-container w3-half">
-    <img src="{{object.image.url}}" class="w3-round" alt='{{obj.title}} cover' style="width:60%">
+    <img src="{{object.image.url}}" class="w3-round" alt='{{object.title}} cover' style="width:60%">
   </div>
-  <div class="w3-container w3-half" style="font-size:20px">
-    <b>Developer: </b>{{ object.developer }}<br><br>
-    <b>Publisher: </b>{{ object.publisher }}<br><br>
-    <b>Category: </b>{{ object.get_category_title }}<br><br>
-    <b>Rating: </b>{{ object.avg_rating }}<br><br>
-    <b>Price: </b>{{ object.get_price }}<br><br>
+
+  <div class="w3-container w3-half">
+    <form action="{{ products.views.purchase }}" method="post">{% csrf_token %}
+      <b>Title:</b> {{ object.title }}<br>
+      <b>Price(USD):</b> {{ object.price }}<br>
+      Please send the price ammount in our bKash number.<br>
+      <b>01xxx xxx xxx</b><br>
+      <b>TRX ID:</b> <input name="trx" type="text"><br>
+      {% if request.user.is_authenticated %}
+      <input name="submit" type="submit" class="w3-btn w3-green" value="Submit">
+      {% else %}
+      <input name="submit" type="submit" class="w3-btn w3-green" value="Submit" disabled="">
+      Please login first
+      {% endif %}
+    </form>
   </div>
 </div>
+{% endblock %}
+
+{% block script %}
+
 {% endblock %}

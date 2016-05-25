@@ -6,7 +6,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.db.models import Q
 from .form_add_product import AddProductForm
 from .form_add_product import CronForm
-
+from .form_add_product import Rating
 
 # Create your views here.
 from .models import Product
@@ -74,10 +74,15 @@ def product_home(request):
     }
     return render(request, "index.html", context)
 
-# this func is not being called. i dont know why
+
 @csrf_protect
 def product_detail(request, slug=None):
     obj = get_object_or_404(Product, slug=slug)
+    form = Rating(request.POST or None)
+    if form.is_valid():
+        instance = form.cleaned_data[ 'avg_rating' ]
+        temp = form.cleaned_data[ 'users_rated' ]
+        instance.save()
     context = {
         "object": obj,
         "title": obj.title,
@@ -122,3 +127,19 @@ def about(request):
 
 def contact(request):
     return render(request, "contact.html",{})
+
+def buy_now(request, slug=None):
+    #print "kutta"
+    obj = get_object_or_404(Product, slug=slug)
+    context = {
+        "object": obj,
+        "title": obj.title,
+    }
+    return render(request, "purchase.html", context)
+
+def purchase(request, slug=None):
+    obj = get_object_or_404(Product, slug=slug)
+    return render(request, "done.html", {})
+
+def done(request, slug=None):
+    return render(request, "done.html", {})

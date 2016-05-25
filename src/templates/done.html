@@ -1,0 +1,14 @@
+{% extends "rbase.html" %}
+{% load staticfiles %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block filter %}
+{% endblock %}
+
+{% block grid %}
+<br><br><br><br><br><br>
+<div class="w3-container" style="font-size:20px">
+  Congratulations! Your desired product key(s) have been delivered to your email address: {{ request.user.email }}
+</div>
+{% endblock %}

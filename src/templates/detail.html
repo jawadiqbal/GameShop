@@ -11,14 +11,27 @@
 <h1 class="w3-padding">{{ object.title }}</h1>
 <div class="w3-row">
   <div class="w3-container w3-half">
-    <img src="{{object.image.url}}" class="w3-round" alt='{{obj.title}} cover' style="width:60%">
+    <img src="{{object.image.url}}" class="w3-round" alt='{{object.title}} cover' style="width:60%">
   </div>
   <div class="w3-container w3-half" style="font-size:20px">
     <b>Developer: </b>{{ object.developer }}<br><br>
     <b>Publisher: </b>{{ object.publisher }}<br><br>
     <b>Category: </b>{{ object.get_category_title }}<br><br>
     <b>Rating: </b>{{ object.avg_rating }}<br><br>
+    <b>Your rating: </b>
+    <!--<form method="post" action="products.views.product_detail">
+      <select id="select1">
+        <option value="">---</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <input type="submit" class="w3-btn w3-green" value="Submit">
+    </form>-->
     <b>Price: </b>{{ object.get_price }}<br><br>
+    <a href="/products/{{ object.slug }}/purchase/" class="w3-btn w3-green" role="button">Buy now</a>
   </div>
 </div>
 {% endblock %}
